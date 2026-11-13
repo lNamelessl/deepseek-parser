@@ -306,6 +306,9 @@ async def parse(file: UploadFile = File(...), mode: str = Form("rich")):
                 ],
             }],
             "stream": False,
+            # deepseek-flash has thinking ON by default (high effort) —
+            # extraction would burn the entire output budget on reasoning.
+            "thinking": {"type": "disabled"},
         }
         status, body, net_err = await call_upstream(
             client, key, f"{DEEPSEEK_BASE}/chat/completions",
