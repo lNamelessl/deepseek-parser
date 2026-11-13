@@ -81,7 +81,7 @@ Upstream has **no download endpoint**: once parsed, a file cannot be fetched bac
 | OCR tool | usage reported per call (`usage` is reference-only for OCR) |
 | Chat extraction tokens (deepseek-flash) | $0.30 / 1M input, $1.20 / 1M output at peak (01:00-04:00 + 06:00-10:00 UTC Mon-Fri); half off-peak; cache hits ~1/50th |
 
-Every response carries `usage` (tokens per call) so spend is visible. A 2-page rich parse typically costs well under $0.001.
+Every response carries `usage` (tokens per call) so spend is visible. A 2-page rich parse typically costs well under $0.001. Measured on Railway (small 2-page fixtures): `/parse` text 3.2 s, `/parse` rich 4.0 s, `/ocr` 2.3-2.8 s, XLSX via `mode=file` 3.2 s (in-app time; add ~1-4 s request overhead). Upload time adds ~30 s for a 26 MiB file through the edge proxy.
 
 ## The one variable
 
